@@ -6,9 +6,11 @@ export const state = () => ({
 
 export const actions = {
   async fetchCat({ commit }) {
-    const cat = await axios.get('https://aws.random.cat/meow').then((res) => {
-      return res.data.file
-    })
+    const cat = await axios
+      .get('https://llnlearn.herokuapp.com/')
+      .then((res) => {
+        return res.data.file
+      })
 
     commit('SAVE_CAT', cat)
   }
