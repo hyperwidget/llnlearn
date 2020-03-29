@@ -1,18 +1,8 @@
 <template>
   <section class="section">
     <div class="columns is-mobile">
-      <card title="Free" icon="github-circle">
-        Open source on
-        <a href="https://github.com/buefy/buefy">
-          GitHub
-        </a>
-      </card>
-
-      <card title="Responsive" icon="cellphone-link">
-        <b class="has-text-grey">
-          Every
-        </b>
-        component is responsive
+      <card>
+        <img :src="cat" />
       </card>
     </div>
   </section>
@@ -26,6 +16,14 @@ export default {
 
   components: {
     Card
+  },
+  async fetch({ store, params }) {
+    await store.dispatch('demo/fetchCat')
+  },
+  computed: {
+    cat() {
+      return this.$store.state.demo?.cat
+    }
   }
 }
 </script>
